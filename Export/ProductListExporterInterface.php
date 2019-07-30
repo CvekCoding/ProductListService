@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * This file is part of the Diningedge package.
  *
  * (c) Sergey Logachev <svlogachev@gmail.com>
@@ -12,13 +12,10 @@ declare(strict_types=1);
 
 namespace App\Utils\EDI\ProductListService\Export;
 
-use Symfony\Component\Serializer\Encoder\CsvEncoder;
-use Symfony\Component\Serializer\Encoder\EncoderInterface;
+use App\Entity\Main\Location;
+use App\Entity\Main\ProductList;
 
-final class CsvProductListExporter extends AbstractProductListExporter
+interface ProductListExporterInterface
 {
-    protected function getEncoderFormat(): string
-    {
-        return 'csv';
-    }
+	public function export(Location $location, ProductList $productList): string;
 }

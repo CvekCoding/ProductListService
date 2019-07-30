@@ -25,23 +25,15 @@ use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-abstract class AbstractProductListImporter
+abstract class AbstractProductListImporter implements ProductListImporterInterface
 {
     private $serializer;
 
-    abstract protected function getDecoder(): DecoderInterface;
-
     abstract protected function getFormat(): string;
 
-    public function __construct()
+    public function __construct(Serializer $serializer)
     {
-        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
-        $metadataAwareNameConverter = new MetadataAwareNameConverter($classMetadataFactory);
-
-        $this->serializer = new Serializer(
-            [new ObjectNormalizer($classMetadataFactory, $metadataAwareNameConverter), new ArrayDenormalizer()],
-            [$this->getDecoder()]
-        );
+        $this->serializer = $serializer;
     }
 
     /**

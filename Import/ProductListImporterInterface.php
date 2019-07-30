@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * This file is part of the Diningedge package.
  *
  * (c) Sergey Logachev <svlogachev@gmail.com>
@@ -8,17 +8,12 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace App\Utils\EDI\ProductListService\Import;
 
-use Symfony\Component\Serializer\Encoder\CsvEncoder;
-use Symfony\Component\Serializer\Encoder\DecoderInterface;
+use App\Utils\EDI\ProductListService\Entity\EdiProductListFile;
+use Symfony\Component\HttpFoundation\File\File;
 
-final class CsvProductListImporter extends AbstractProductListImporter
+interface ProductListImporterInterface
 {
-    protected function getFormat(): string
-    {
-        return 'csv';
-    }
+	public function getProductListFileObject(File $file): ?EdiProductListFile;
 }

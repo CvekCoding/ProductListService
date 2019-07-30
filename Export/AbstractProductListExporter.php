@@ -27,23 +27,15 @@ use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-abstract class AbstractProductListExporter
+abstract class AbstractProductListExporter implements ProductListExporterInterface
 {
     private $serializer;
 
-    abstract protected function getEncoder(): EncoderInterface;
-
     abstract protected function getEncoderFormat(): string;
 
-    public function __construct()
+    public function __construct(Serializer $serializer)
     {
-        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
-        $metadataAwareNameConverter = new MetadataAwareNameConverter($classMetadataFactory);
-
-        $this->serializer = new Serializer(
-            [new ObjectNormalizer($classMetadataFactory, $metadataAwareNameConverter)],
-            [$this->getEncoder()]
-        );
+        $this->serializer = $serializer;
     }
 
     /**
