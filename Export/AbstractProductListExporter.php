@@ -11,11 +11,6 @@ use App\Entity\Main\Product;
 use App\Entity\Main\ProductList;
 use App\Utils\EDI\ProductListService\Entity\EdiProductListFile;
 use App\Utils\EDI\ProductListService\Entity\EdiProductListFileItem;
-use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Component\Serializer\Encoder\EncoderInterface;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 

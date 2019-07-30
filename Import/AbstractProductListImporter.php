@@ -7,13 +7,7 @@ namespace App\Utils\EDI\ProductListService\Import;
 use App\Utils\EDI\ProductListService\Entity\EdiProductListFile;
 use App\Utils\EDI\ProductListService\Entity\EdiProductListFileItem;
 use App\Utils\Exception\RuntimeException;
-use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Serializer\Encoder\DecoderInterface;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
