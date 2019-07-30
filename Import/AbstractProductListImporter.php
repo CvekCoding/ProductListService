@@ -15,6 +15,11 @@ abstract class AbstractProductListImporter implements ProductListImporterInterfa
 {
     private $serializer;
 
+	/**
+	 * It must be a string acceptable by symfony serializer as a format name.
+	 *
+	 * @return string
+	 */
     abstract protected function getFormat(): string;
 
     public function __construct(Serializer $serializer)
